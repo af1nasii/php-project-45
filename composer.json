@@ -2,7 +2,8 @@
     "name": "hexlet/code",
     "description": "A simple brain games package",
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+	"bin/brain-even"
     ],
     "autoload": {
         "psr-4": {
