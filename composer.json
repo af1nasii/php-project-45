@@ -12,11 +12,11 @@
     "autoload": {
         "files" : [
             "src/Cli.php",
-            "src/GameEven.php",
-            "src/GameCalc.php",
-            "src/GameGcd.php",
-            "src/GameProg.php",
-            "src/GameSimple.php"
+            "src/Games/GameEven.php",
+            "src/Games/GameCalc.php",
+            "src/Games/GameGcd.php",
+            "src/Games/GameProg.php",
+            "src/Games/GameSimple.php"
         ]
     },
     "require": {
