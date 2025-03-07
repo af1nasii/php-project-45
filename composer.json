@@ -3,12 +3,17 @@
     "description": "A simple brain games package",
     "bin": [
         "bin/brain-games",
-	"bin/brain-even"
+        "bin/brain-even",
+	    "bin/brain-calc",
+        "bin/brain-gcd"
     ],
     "autoload": {
-        "psr-4": {
-	     "BrainGames\\": "src/"
-        }
+        "files" : [
+            "src/Cli.php",
+            "src/GameEven.php",
+            "src/GameCalc.php",
+            "src/GameGcd.php"
+        ]
     },
     "require": {
         "wp-cli/php-cli-tools": "^0.12.1"
