@@ -10,6 +10,8 @@ brain-gcd:
 	./bin/brain-gcd
 brain-prog:
 	./bin/brain-prog
+brain-simple:
+	./bin/brain-simple
 validate:
 	composer validate
 lint:

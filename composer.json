@@ -6,7 +6,8 @@
         "bin/brain-even",
 	    "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-prog"
+        "bin/brain-prog",
+        "bin/brain-simple"
     ],
     "autoload": {
         "files" : [
@@ -14,7 +15,8 @@
             "src/GameEven.php",
             "src/GameCalc.php",
             "src/GameGcd.php",
-            "src/GameProg.php"
+            "src/GameProg.php",
+            "src/GameSimple.php"
         ]
     },
     "require": {
