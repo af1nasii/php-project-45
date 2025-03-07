@@ -8,6 +8,8 @@ brain-calc:
 	./bin/brain-calc
 brain-gcd:
 	./bin/brain-gcd
+brain-prog:
+	./bin/brain-prog
 validate:
 	composer validate
 lint:

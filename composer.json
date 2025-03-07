@@ -5,14 +5,16 @@
         "bin/brain-games",
         "bin/brain-even",
 	    "bin/brain-calc",
-        "bin/brain-gcd"
+        "bin/brain-gcd",
+        "bin/brain-prog"
     ],
     "autoload": {
         "files" : [
             "src/Cli.php",
             "src/GameEven.php",
             "src/GameCalc.php",
-            "src/GameGcd.php"
+            "src/GameGcd.php",
+            "src/GameProg.php"
         ]
     },
     "require": {
