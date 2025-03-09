@@ -31,4 +31,3 @@ function runGame(string $gameDescription, callable $generateRoundData): void
 
     line("Congratulations, %s!", $userName);
 }
-

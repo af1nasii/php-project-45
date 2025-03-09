@@ -7,7 +7,7 @@
 	    "bin/brain-calc",
         "bin/brain-gcd",
         "bin/brain-prog",
-        "bin/brain-simple"
+        "bin/brain-prime"
     ],
     "autoload": {
         "files" : [
@@ -16,7 +16,7 @@
             "src/Games/GameCalc.php",
             "src/Games/GameGcd.php",
             "src/Games/GameProg.php",
-            "src/Games/GameSimple.php"
+            "src/Games/GamePrime.php"
         ]
     },
     "require": {
