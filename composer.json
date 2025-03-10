@@ -6,7 +6,7 @@
         "bin/brain-even",
 	    "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-prog",
+        "bin/brain-progression",
         "bin/brain-prime"
     ],
     "autoload": {
@@ -16,7 +16,7 @@
             "src/Games/GameEven.php",
             "src/Games/GameCalc.php",
             "src/Games/GameGcd.php",
-            "src/Games/GameProg.php",
+            "src/Games/GameProgression.php",
             "src/Games/GamePrime.php"
         ]
     },
