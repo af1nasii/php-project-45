@@ -12,7 +12,7 @@ function gcd(int $a, int $b): int
     return $a;
 }
 
-function GenerateGcdData(): array
+function generateGcdData(): array
 {
     $a = rand(1, 100);
     $b = rand(1, 100);
