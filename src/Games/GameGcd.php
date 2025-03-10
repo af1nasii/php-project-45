@@ -1,11 +1,8 @@
 <?php
 
-namespace BrainGames\Games\GameGcd;
+namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
-const ROUNDS_COUNT = 3;
+use function BrainGames\runGame;
 
 function gcd(int $a, int $b): int
 {
@@ -15,32 +12,18 @@ function gcd(int $a, int $b): int
     return $a;
 }
 
+function GenerateGcdData(): array
+{
+    $a = rand(1, 100);
+    $b = rand(1, 100);
+
+    $question = "$a $b";
+    $correctAnswer = (string) gcd($a, $b);
+
+    return [$question, $correctAnswer];
+}
+
 function playGcd(): void
 {
-    line('Welcome to the Brain Games!');
-    $userName = prompt('May I have your name?');
-    line("Hello, %s!", $userName);
-
-    line('Find the greatest common divisor of given numbers.');
-
-    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $a = rand(1, 100);
-        $b = rand(1, 100);
-
-        $question = "$a $b";
-        $correctAnswer = (string) gcd($a, $b);
-
-        line("Question: %s", $question);
-        $userAnswer = prompt("Your answer");
-
-        if ($userAnswer !== $correctAnswer) {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
-            line("Let's try again, %s!", $userName);
-            return;
-        }
-
-        line("Correct!");
-    }
-
-    line("Congratulations, %s!", $userName);
+    runGame('Find the greatest common divisor of given numbers.', fn() => generateGcdData());
 }

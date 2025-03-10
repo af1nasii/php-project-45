@@ -1,11 +1,9 @@
 <?php
 
-namespace BrainGames\Games\GameCalc;
+namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\runGame;
 
-const ROUNDS_COUNT = 3;
 const OPERATORS = ['+', '-', '*'];
 
 function calculate(int $a, int $b, string $operator): int
@@ -22,33 +20,19 @@ function calculate(int $a, int $b, string $operator): int
     }
 }
 
+function generateCalcData(): array
+{
+    $a = rand(1, 20);
+    $b = rand(1, 20);
+    $operator = OPERATORS[array_rand(OPERATORS)];
+
+    $question = "$a $operator $b";
+    $correctAnswer = (string) calculate($a, $b, $operator);
+
+    return [$question, $correctAnswer];
+}
+
 function playCalc(): void
 {
-    line('Welcome to the Brain Games!');
-    $userName = prompt('May I have your name?');
-    line("Hello, %s!", $userName);
-
-    line('What is the result of the expression?');
-
-    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $a = rand(1, 50);
-        $b = rand(1, 50);
-        $operator = OPERATORS[array_rand(OPERATORS)];
-
-        $question = "$a $operator $b";
-        $correctAnswer = (string) calculate($a, $b, $operator);
-
-        line("Question: %s", $question);
-        $userAnswer = prompt("Your answer");
-
-        if ($userAnswer !== $correctAnswer) {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
-            line("Let's try again, %s!", $userName);
-            return;
-        }
-
-        line("Correct!");
-    }
-
-    line("Congratulations, %s!", $userName);
+    runGame('What is the result of the expression?', fn() => generateCalcData());
 }

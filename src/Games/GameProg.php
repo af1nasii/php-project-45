@@ -1,17 +1,8 @@
 <?php
 
-namespace BrainGames\Games\GameProg;
+namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
-const ROUNDS_COUNT = 3;
-const MIN_LENGTH = 5;
-const MAX_LENGTH = 10;
-const MIN_START = 1;
-const MAX_START = 50;
-const MIN_STEP = 1;
-const MAX_STEP = 10;
+use function BrainGames\runGame;
 
 function generateProgression(int $start, int $step, int $length): array
 {
@@ -22,37 +13,23 @@ function generateProgression(int $start, int $step, int $length): array
     return $progression;
 }
 
+function generateProgData(): array
+{
+    $length = rand(5, 10);
+    $start = rand(1, 50);
+    $step = rand(1, 10);
+    $progression = generateProgression($start, $step, $length);
+
+    $hiddenIndex = rand(0, $length - 1);
+    $correctAnswer = (string) $progression[$hiddenIndex];
+    $progression[$hiddenIndex] = '..';
+
+    $question = implode(' ', $progression);
+
+    return [$question, $correctAnswer];
+}
+
 function playProgression(): void
 {
-    line('Welcome to the Brain Games!');
-    $userName = prompt('May I have your name?');
-    line("Hello, %s!", $userName);
-
-    line('What number is missing in the progression?');
-
-    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $length = rand(MIN_LENGTH, MAX_LENGTH);
-        $start = rand(MIN_START, MAX_START);
-        $step = rand(MIN_STEP, MAX_STEP);
-        $progression = generateProgression($start, $step, $length);
-
-        $hiddenIndex = rand(0, $length - 1);
-        $correctAnswer = (string) $progression[$hiddenIndex];
-        $progression[$hiddenIndex] = '..';
-
-        $question = implode(' ', $progression);
-        line("Question: %s", $question);
-
-        $userAnswer = prompt("Your answer");
-
-        if ($userAnswer !== $correctAnswer) {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
-            line("Let's try again, %s!", $userName);
-            return;
-        }
-
-        line("Correct!");
-    }
-
-    line("Congratulations, %s!", $userName);
+    runGame('What number is missing in the progression?', fn() => generateProgData());
 }

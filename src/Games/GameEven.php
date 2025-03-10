@@ -1,39 +1,25 @@
 <?php
 
-namespace BrainGames\Games\GameEven;
+namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\runGame;
 
 function isEven(int $number): bool
 {
     return $number % 2 === 0;
 }
 
-function startGame(): void
+function generateEvenData(): array
 {
-    line('Welcome to the Brain Games!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line('Answer "yes" if the number is even, otherwise answer "no".');
+    $number = rand(1, 100);
 
-    $roundsToWin = 3;
+    $question = "$number";
+    $correctAnswer = isEven($number) ? 'yes' : 'no';
 
-    for ($i = 0; $i < $roundsToWin; $i++) {
-        $number = rand(1, 100);
-        line("Question: %d", $number);
-        $answer = prompt('Your answer');
+    return [$question, $correctAnswer];
+}
 
-        $correctAnswer = isEven($number) ? 'yes' : 'no';
-
-        if ($answer !== $correctAnswer) {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $correctAnswer);
-            line("Let's try again, %s!", $name);
-            return;
-        }
-
-        line('Correct!');
-    }
-
-    line("Congratulations, %s!", $name);
+function playEven(): void
+{
+    runGame('Answer "yes" if the number is even, otherwise answer "no".', fn() => generateEvenData());
 }
